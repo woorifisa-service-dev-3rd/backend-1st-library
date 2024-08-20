@@ -1,0 +1,36 @@
+plugins {
+    id 'java'
+}
+
+group = 'dev.service.cloud'
+version = '1.0-SNAPSHOT'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    compileOnly 'org.projectlombok:lombok:1.18.34'
+    annotationProcessor 'org.projectlombok:lombok:1.18.34'
+
+    // mysql connector
+//    runtimeOnly 'com.mysql:mysql-connector-java'
+//    implementation group: 'com.mysql', name: 'mysql-connector-j', version: '8.0.33'
+    runtimeOnly 'com.mysql:mysql-connector-j'
+//    implementation 'org.mariadb.jdbc:mariadb-java-client:3.1.4'
+
+    // SLF4J API 추가
+    // 콘솔에 로그를 출력하기 위한 간단한 구현체 (Logback 또는 Simple Logger)
+    implementation 'org.slf4j:slf4j-api:2.0.9'
+    implementation 'org.slf4j:slf4j-simple:2.0.9'
+
+
+    testCompileOnly 'org.projectlombok:lombok:1.18.34'
+    testAnnotationProcessor 'org.projectlombok:lombok:1.18.34'
+    testImplementation platform('org.junit:junit-bom:5.10.0')
+    testImplementation 'org.junit.jupiter:junit-jupiter'
+}
+
+test {
+    useJUnitPlatform()
+}

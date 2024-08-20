@@ -1,0 +1,5 @@
+db:
+  username: root
+  password: 1234
+  url: jdbc:mariadb://localhost:3306/
+  database: test
