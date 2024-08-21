@@ -1,6 +1,5 @@
 plugins {
     id 'java'
-    id 'com.github.johnrengelman.shadow' version '7.1.2'  // Shadow 플러그인 추가
 }
 
 group = 'dev.service.cloud'
