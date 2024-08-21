@@ -46,7 +46,7 @@ public class CardConsole {
             }
         }
 
-        List<CardService.ShowSelectLibrary> showSelectLibraries = cardService.showLibraryWithoutStudent(studentId);
+        List<ShowSelectLibrary> showSelectLibraries = cardService.showLibraryWithoutStudent(studentId);
         System.out.println("어느 도서관에 등록하시겠습니까?");
         StringBuilder stringBuilder = new StringBuilder();
         AtomicInteger index = new AtomicInteger(1);

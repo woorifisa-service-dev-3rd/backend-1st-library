@@ -27,11 +27,4 @@ public class CardService {
 
        return selectLibraries;
     }
-
-    @AllArgsConstructor
-    @Getter
-    static class ShowSelectLibrary{
-        int number;
-        LibraryDAO libraryDAO;
-    }
 }
