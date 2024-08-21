@@ -10,6 +10,6 @@ import java.sql.Connection;
 public class Main {
     public static void main(String[] args) {
         CardConsole cardConsole = new CardConsole();
-        cardConsole.Play(1L);
+        cardConsole.play(1L);
     }
 }
