@@ -60,11 +60,10 @@ public class StudentDAO {
     }
 
     public void saveStudent(String name, Date birth, String address) {
-        final String studentSelectQuery = "INSERT INTO `Student` (`name`, `birth`, `address`) VALUES\n" +
-                "                                                       (?, ?, ?)";
+        final String studentSave = "INSERT INTO `Student` (`name`, `birth`, `address`) VALUES\n" + "(?, ?, ?)";
         try {
             connection = DBUtil.getConnection();
-            preparedStatement = connection.prepareStatement(studentSelectQuery);
+            preparedStatement = connection.prepareStatement(studentSave);
             preparedStatement.setString(1, name);
             preparedStatement.setDate(2, birth);
             preparedStatement.setString(3, address);

@@ -1,5 +1,5 @@
 db:
   username: root
-  password: 132465
+  password: 1234
   url: jdbc:mysql://localhost:3306/
   database: test
