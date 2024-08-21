@@ -11,10 +11,7 @@ import java.util.Calendar;
 
 public class ReturnDao {
 
-//             Connection connection = DBUtil.getConnection();
-
-
-    public ArrayList<ReturnBookDto> showLoanBook(int studentId, int libraryId) {
+    public ArrayList<ReturnBookDto> showLoanBook(long studentId, long libraryId) {
 
         Connection connection = null;
         PreparedStatement pstmt = null;
@@ -30,8 +27,8 @@ public class ReturnDao {
                                         + " from Loan"
                                         + " where student_id = ? and library_id = ?";
             pstmt = connection.prepareStatement(showLoanBookSql);
-            pstmt.setInt(1,studentId);
-            pstmt.setInt(2,libraryId);
+            pstmt.setLong(1,studentId);
+            pstmt.setLong(2,libraryId);
 
             rs = pstmt.executeQuery();
             while (rs.next()) {
@@ -59,7 +56,7 @@ public class ReturnDao {
     }
 
 
-    public ReturnBookDto checkLoanDateAndReturn(int studentId, String returnBookTitle, int libraryId) {
+    public ReturnBookDto checkLoanDateAndReturn(long studentId, String returnBookTitle, long libraryId) {
 
         Connection connection = null;
         PreparedStatement pstmt = null;
@@ -79,8 +76,8 @@ public class ReturnDao {
 
 
             pstmt = connection.prepareStatement(checkLoanDateSql);
-            pstmt.setInt(1,studentId);
-            pstmt.setInt(2,libraryId);
+            pstmt.setLong(1,studentId);
+            pstmt.setLong(2,libraryId);
             pstmt.setString(3,returnBookTitle);
 
             rs = pstmt.executeQuery();
@@ -127,7 +124,7 @@ public class ReturnDao {
 
     }
 
-    public void deleteLoanAndUpdateStock(int studentId, String returnBookTitle, int libraryId) {
+    public void deleteLoanAndUpdateStock(long studentId, String returnBookTitle, long libraryId) {
 
         Connection connection = null;
         PreparedStatement pstmt = null;
@@ -143,8 +140,8 @@ public class ReturnDao {
                     + " where student_id = ? and library_id = ? and book_title = ?";
 
             pstmt = connection.prepareStatement(deleteLoanSql);
-            pstmt.setInt(1,studentId);
-            pstmt.setInt(2,libraryId);
+            pstmt.setLong(1,studentId);
+            pstmt.setLong(2,libraryId);
             pstmt.setString(3,returnBookTitle);
 
             flag = pstmt.executeUpdate();
@@ -155,7 +152,7 @@ public class ReturnDao {
                     + " where library_id = ? and book_title = ?";
 
             pstmt = connection.prepareStatement(selectStockSql);
-            pstmt.setInt(1,libraryId);
+            pstmt.setLong(1,libraryId);
             pstmt.setString(2,returnBookTitle);
             rs = pstmt.executeQuery();
 
@@ -170,12 +167,10 @@ public class ReturnDao {
 
             pstmt = connection.prepareStatement(updateStockSql);
             pstmt.setInt(1,count+1);
-            pstmt.setInt(2,libraryId);
+            pstmt.setLong(2,libraryId);
             pstmt.setString(3,returnBookTitle);
 
             flag = pstmt.executeUpdate();
-            System.out.println(flag+">0이면 성공");
-
         } catch (SQLException e) {
             throw new RuntimeException(e);
         } finally {

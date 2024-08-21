@@ -4,6 +4,8 @@ import dev.service.cloud.domain.card.CardConsole;
 import dev.service.cloud.domain.loan.LoanConsole;
 import dev.service.cloud.domain.loan.LoanDAO;
 import dev.service.cloud.domain.request.RequestConsole;
+import dev.service.cloud.domain.returnToLib.ReturnConsole;
+import dev.service.cloud.domain.returnToLib.ReturnDao;
 import dev.service.cloud.domain.student.StudentConsole;
 import dev.service.cloud.global.DBUtil;
 import lombok.extern.slf4j.Slf4j;
@@ -14,6 +16,7 @@ import java.sql.Connection;
 public class Main {
     public static void main(String[] args) {
         withJar(args[0]);
+//        withOutJar();
     }
 
     static void withOutJar() {
@@ -30,7 +33,8 @@ public class Main {
         long library_id = loanConsole.execute(memberId);
 
         // 반납
-
+        ReturnConsole returnConsole = new ReturnConsole(new ReturnDao());
+        returnConsole.excute(memberId, library_id);
 
         // 도서 신청
         RequestConsole requestConsole = new RequestConsole();
@@ -40,6 +44,7 @@ public class Main {
     static void withJar(String ymlPath) {
         // 학생 등록
         DBUtil.ymlPath = ymlPath;
+        // 학생 등록
         StudentConsole studentConsole = new StudentConsole();
         long memberId = studentConsole.isMaking();
 
@@ -52,7 +57,8 @@ public class Main {
         long library_id = loanConsole.execute(memberId);
 
         // 반납
-
+        ReturnConsole returnConsole = new ReturnConsole(new ReturnDao());
+        returnConsole.excute(memberId, library_id);
 
         // 도서 신청
         RequestConsole requestConsole = new RequestConsole();

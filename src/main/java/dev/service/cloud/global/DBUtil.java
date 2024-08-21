@@ -1,5 +1,6 @@
 package dev.service.cloud.global;
 
+import dbconfig.DBConfigurer;
 import lombok.extern.slf4j.Slf4j;
 
 import java.io.FileInputStream;
@@ -13,6 +14,8 @@ import java.util.Properties;
 // DB와 관련된 공통적인 처리 코드들을 별도의 유틸 클래스로 분리
 @Slf4j
 public class DBUtil {
+
+    public static String ymlPath = "";
 
     public static Connection getConnection() {
         if (ymlPath.isEmpty()) {
