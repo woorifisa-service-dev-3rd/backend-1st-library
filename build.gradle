@@ -15,8 +15,8 @@ dependencies {
 
     // mysql connector
 //    runtimeOnly 'com.mysql:mysql-connector-java'
-//    implementation group: 'com.mysql', name: 'mysql-connector-j', version: '8.0.33'
-    runtimeOnly 'com.mysql:mysql-connector-j'
+    implementation group: 'com.mysql', name: 'mysql-connector-j', version: '8.0.33'
+//    runtimeOnly 'com.mysql:mysql-connector-j'
 //    implementation 'org.mariadb.jdbc:mariadb-java-client:3.1.4'
 
     // SLF4J API 추가

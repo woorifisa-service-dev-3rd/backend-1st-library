@@ -10,16 +10,13 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.util.Properties;
 
-// DB와 관련된 공통적인 처리 코드들을 별도의 유틸 클래스로 분리
 @Slf4j
 public class DBUtil {
 
     public static Connection getConnection() {
 
         try {
-            // 외부 라이브러리 불러오기
             Properties prop = readProperties();
-
             final String USER_NAME = prop.getProperty("username");
             final String PASSWORD = prop.getProperty("password");
             final String DB_URL = prop.getProperty("url");
