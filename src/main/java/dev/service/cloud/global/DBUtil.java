@@ -25,7 +25,7 @@ public class DBUtil {
             final String DB_URL = prop.getProperty("url");
             final String DATABASE = prop.getProperty("database");
 
-            log.info("{} {} {} {}", USER_NAME, PASSWORD, DB_URL, DATABASE);
+//            log.info("{} {} {} {}", USER_NAME, PASSWORD, DB_URL, DATABASE);
 
             return DriverManager.getConnection(DB_URL + DATABASE, USER_NAME, PASSWORD);
         } catch (SQLException e) {
