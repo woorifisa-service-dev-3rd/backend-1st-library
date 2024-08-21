@@ -106,7 +106,7 @@ public class LoanDAO {
         return "";
     }
 
-    public boolean checkLoanCardExist(long libraryId, long memberId) {
+    public boolean checkLoanCardExist(long memberId, long libraryId) {
         final String query = "SELECT lc.load_card_id FROM LoanCard lc\n" +
                 "WHERE lc.student_id = ? AND lc.library_id = ?;";
 

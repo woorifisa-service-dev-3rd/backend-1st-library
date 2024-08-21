@@ -3,6 +3,7 @@ package dev.service.cloud;
 import dev.service.cloud.domain.card.CardConsole;
 import dev.service.cloud.domain.loan.LoanConsole;
 import dev.service.cloud.domain.loan.LoanDAO;
+import dev.service.cloud.domain.request.RequestConsole;
 import dev.service.cloud.domain.student.StudentConsole;
 import dev.service.cloud.global.DBUtil;
 import lombok.extern.slf4j.Slf4j;
@@ -12,19 +13,49 @@ import java.sql.Connection;
 @Slf4j
 public class Main {
     public static void main(String[] args) {
+        withJar(args[0]);
+    }
+
+    static void withOutJar() {
         // 학생 등록
         StudentConsole studentConsole = new StudentConsole();
-        studentConsole.isMaking();
-        long memberId = 1L;
+        long memberId = studentConsole.isMaking();
+
         // 도서 대출 카드 생성
         CardConsole cardConsole = new CardConsole();
         cardConsole.play(memberId);
+
         // 대출
         LoanConsole loanConsole = new LoanConsole(new LoanDAO());
-        loanConsole.execute(memberId);
+        long library_id = loanConsole.execute(memberId);
+
         // 반납
 
-        // 도서 신청
 
+        // 도서 신청
+        RequestConsole requestConsole = new RequestConsole();
+        requestConsole.makingRequest(library_id);
+    }
+
+    static void withJar(String ymlPath) {
+        // 학생 등록
+        DBUtil.ymlPath = ymlPath;
+        StudentConsole studentConsole = new StudentConsole();
+        long memberId = studentConsole.isMaking();
+
+        // 도서 대출 카드 생성
+        CardConsole cardConsole = new CardConsole();
+        cardConsole.play(memberId);
+
+        // 대출
+        LoanConsole loanConsole = new LoanConsole(new LoanDAO());
+        long library_id = loanConsole.execute(memberId);
+
+        // 반납
+
+
+        // 도서 신청
+        RequestConsole requestConsole = new RequestConsole();
+        requestConsole.makingRequest(library_id);
     }
 }
