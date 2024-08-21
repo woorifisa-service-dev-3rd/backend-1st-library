@@ -14,7 +14,6 @@ public class CardConsole {
         CardConfig config = new CardConfig();
         CardService cardService = config.cardService();
         Scanner scanner = new Scanner(System.in);
-
         while (true) {
             System.out.println("도서관에 등록하시겠습니까??");
             System.out.println("(1) 예  (2) 아니오");

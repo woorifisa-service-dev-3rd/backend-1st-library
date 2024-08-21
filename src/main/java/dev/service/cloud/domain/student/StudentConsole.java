@@ -28,7 +28,7 @@ public class StudentConsole {
                     System.out.println("잘못된 입력입니다 다시 입력해주세요.");
             }
         }
-        scanner.close();
+//        scanner.close();
     }
 
     public long findStudentId() {
@@ -43,7 +43,7 @@ public class StudentConsole {
                 System.out.print("생년월일 (yyyy-MM-dd): ");
                 Date birth = Date.valueOf(scanner.nextLine());
                 System.out.print("주소: ");
-                String address = scanner.nextLine();
+                String address = scanner.next();
 
                 studentId = studentDAO.loginStudent(name, birth, address);
                 if (studentId == -1) {
@@ -54,6 +54,7 @@ public class StudentConsole {
             }
         } while (studentId == -1);
 
+//        scanner.close();
         return studentId;
     }
 
