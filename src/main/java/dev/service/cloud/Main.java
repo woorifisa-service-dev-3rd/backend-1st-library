@@ -9,7 +9,5 @@ import java.sql.Connection;
 @Slf4j
 public class Main {
     public static void main(String[] args) {
-        CardConsole cardConsole = new CardConsole();
-        cardConsole.play(1L);
     }
 }

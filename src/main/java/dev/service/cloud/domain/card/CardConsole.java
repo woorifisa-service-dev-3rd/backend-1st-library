@@ -46,7 +46,14 @@ public class CardConsole {
             }
         }
 
+
         List<ShowSelectLibrary> showSelectLibraries = cardService.showLibraryWithoutStudent(studentId);
+
+        if(showSelectLibraries.isEmpty()){
+            System.out.println("이미 모든 도서관에 등록이 되어 있어, 더 이상 등록할 수 없습니다!");
+            return;
+        }
+
         System.out.println("어느 도서관에 등록하시겠습니까?");
         StringBuilder stringBuilder = new StringBuilder();
         AtomicInteger index = new AtomicInteger(1);
