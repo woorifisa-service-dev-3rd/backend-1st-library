@@ -14,7 +14,7 @@ public class LoanConsole {
     private final LoanDAO loanDAO;
     private Scanner sc = new Scanner(System.in);
 
-    void execute(long memberId) {
+    long execute(long memberId) {
         System.out.println("도서관 목록 :");
         System.out.println(loanDAO.findLibraryList());
 
@@ -74,5 +74,6 @@ public class LoanConsole {
         }
 
         sc.close();
+        return libraryId;
     }
 }
