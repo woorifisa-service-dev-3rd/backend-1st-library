@@ -8,27 +8,30 @@ import java.util.Scanner;
 public class StudentConsole {
     StudentDAO studentDAO = new StudentDAO();
 
-    public void isMaking() {
+    public long isMaking() {
         Scanner scanner = new Scanner(System.in);
         System.out.println("도서증을 등록하시겠습니까?");
         System.out.println("(1) 예 (2) 아니오");
         int N = 0;
+        long studentId = -1;
 
         while (N != 1 && N != 2) {
             N = scanner.nextInt(); // 입력에서 숫자를 받음
             scanner.nextLine(); // 개행 문자 소비
             switch (N) {
                 case 1:
-                    registerStudent();
+                    studentId = registerStudent();
                     break;
                 case 2:
-                    findStudentId();
+                    studentId = findStudentId();
                     break;
                 default:
                     System.out.println("잘못된 입력입니다 다시 입력해주세요.");
             }
         }
         scanner.close();
+
+        return studentId;
     }
 
     public long findStudentId() {
@@ -57,13 +60,13 @@ public class StudentConsole {
         return studentId;
     }
 
-    public void registerStudent() {
+    public long registerStudent() {
         Scanner scanner = new Scanner(System.in);
         SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
         long studentId = -1;
-        String name;
-        Date birth;
-        String address;
+        String name="";
+        Date birth=null;
+        String address="";
         try {
             do {
                 System.out.println("등록 하실 이름을 입력해주세요.");
@@ -85,6 +88,13 @@ public class StudentConsole {
             }
         } catch (Exception e) {
             e.printStackTrace();
+        } finally {
+            try {
+                studentId = studentDAO.loginStudent(name, birth, address);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
         }
+        return studentId;
     }
 }
