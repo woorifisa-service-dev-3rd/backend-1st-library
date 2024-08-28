@@ -3,11 +3,11 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>도서관 선택</title>
+    <title>도서관 입장</title>
 </head>
 <body>
-    <h1>도서관 선택</h1>
-    <form action="/semi-Library/library-api/card-register" method="post">
+    <h1>도서관 입장</h1>
+    <form action="/semi-Library/index.html" method="post">
         <select name="library">
             <%
                 List<String> libraries = (List<String>) request.getAttribute("libraryList");

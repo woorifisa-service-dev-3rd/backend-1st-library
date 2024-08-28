@@ -16,20 +16,35 @@ import global.Controller;
 
 public class CardController implements Controller {
 	
+	private final CardDAO cardDAO;
+	
+	public CardController() {
+		this.cardDAO = AppConfig.cardDAO();
+	}
+	
 
 	@Override
 	public void process(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		//request.setCharacterEncoding("UTF-8");
-		
-		// MouseDAO.java를 통해 DB에서 Mouse 데이터의 값을 조회해서 받아오기
-		//List<Mouse> mice = mouseDAO.findAll();
-		
-		// 조회된 값을 request에 저장
-		//request.setAttribute("mouseList", mice);
-		
-		// JSP 페이지로 포워딩
-		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/views/card.jsp");
-		dispatcher.forward(request, response);
-		
+	    Long userIdObject = (Long) request.getSession().getAttribute("userId");
+
+	    System.out.println(userIdObject);
+	    long userId = (userIdObject != null) ? userIdObject : -1;
+	    
+	    if(userId == -1) {
+			request.setAttribute("errorMessage", "유저가 존재하지 않습니다.");
+			RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/views/error.jsp");
+			dispatcher.forward(request, response);
+			return;
+	    }
+
+	    List<String> libraryList = cardDAO.findLibrariesWithoutStudent(userId);
+	    
+	    request.setAttribute("libraryList", libraryList);
+
+	    // JSP 페이지로 포워딩
+	    RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/views/card.jsp");
+	    dispatcher.forward(request, response);
 	}
+
+
 }

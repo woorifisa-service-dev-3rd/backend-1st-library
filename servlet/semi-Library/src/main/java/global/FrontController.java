@@ -12,6 +12,11 @@ import javax.servlet.http.HttpServletResponse;
 
 import domain.Return.ReturnController;
 import domain.card.CardController;
+import domain.card.CardRegisterController;
+import domain.login.LoginUserController;
+import domain.login.SaveUserController;
+import domain.login.LoginFormController;
+import domain.login.RegisterFormController;
 
 /**
  * Servlet implementation class FrontController
@@ -24,7 +29,12 @@ public class FrontController extends HttpServlet {
 
 	public FrontController() {
 		controllerMap.put("/card", new CardController());
+		controllerMap.put("/card-register", new CardRegisterController());
 		controllerMap.put("/returnbook", new ReturnController());
+		controllerMap.put("/loginForm", new LoginFormController());
+		controllerMap.put("/registerForm", new RegisterFormController());
+		controllerMap.put("/login", new LoginUserController());
+		controllerMap.put("/register", new SaveUserController());
 	}
 
 
