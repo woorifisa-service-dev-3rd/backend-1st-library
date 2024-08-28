@@ -10,7 +10,7 @@ public class DBUtil {
         Connection connection = null;
         try {
 
-            String dbUrl = "jdbc:mysql://localhost:3306/testdb";
+            String dbUrl = "jdbc:mysql://localhost:3306/test";
             String userName = "root";
             String password = "1234";
             
@@ -41,7 +41,6 @@ public class DBUtil {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-
 	}
 
 	public static void close(Connection con, PreparedStatement pstmt) {
