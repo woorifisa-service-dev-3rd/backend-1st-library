@@ -16,16 +16,24 @@ import global.Controller;
 
 public class CardController implements Controller {
 	
+	private final CardDAO cardDAO;
+	
+	public CardController() {
+		this.cardDAO = AppConfig.cardDAO();
+	}
+	
 
 	@Override
 	public void process(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		//request.setCharacterEncoding("UTF-8");
+		List<String> libraryList =  cardDAO.findLibrariesWithoutStudent(1L);
 		
 		// MouseDAO.java를 통해 DB에서 Mouse 데이터의 값을 조회해서 받아오기
 		//List<Mouse> mice = mouseDAO.findAll();
 		
 		// 조회된 값을 request에 저장
 		//request.setAttribute("mouseList", mice);
+		request.setAttribute("libraryList", libraryList);
 		
 		// JSP 페이지로 포워딩
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/views/card.jsp");
