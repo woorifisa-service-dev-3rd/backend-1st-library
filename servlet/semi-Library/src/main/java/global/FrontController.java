@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import domain.card.CardController;
+import domain.card.CardRegisterController;
 
 /**
  * Servlet implementation class FrontController
@@ -23,6 +24,7 @@ public class FrontController extends HttpServlet {
 
 	public FrontController() {
 		controllerMap.put("/card", new CardController());
+		controllerMap.put("/card-register", new CardRegisterController());
 	}
 
 

@@ -35,7 +35,16 @@ public class CardRegisterController implements Controller {
 			return;
 		}
 
-		List<String> libraryList =  cardDAO.findLibraryNameByStudentId(1L);
+	    Long userIdObject = (Long) request.getSession().getAttribute("userId");
+	    long userId = (userIdObject != null) ? userIdObject : -1;
+	    if(userId == -1) {
+			request.setAttribute("errorMessage", "유저가 존재하지 않습니다.");
+			RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/views/error.jsp");
+			dispatcher.forward(request, response);
+			return;
+	    }
+	    
+		List<String> libraryList =  cardDAO.findLibraryNameByStudentId(userId);
 		request.setAttribute("libraryList", libraryList);
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/views/openLibrary.jsp");
 		dispatcher.forward(request, response);
