@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import domain.Return.ReturnController;
 import domain.card.CardController;
 
 /**
@@ -23,6 +24,7 @@ public class FrontController extends HttpServlet {
 
 	public FrontController() {
 		controllerMap.put("/card", new CardController());
+		controllerMap.put("/returnbook", new ReturnController());
 	}
 
 
