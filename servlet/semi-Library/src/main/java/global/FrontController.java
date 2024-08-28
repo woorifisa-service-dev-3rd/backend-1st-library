@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import domain.Return.ReturnController;
 import domain.card.CardController;
 import domain.login.LoginUserController;
 import domain.login.SaveUserController;
@@ -31,6 +32,7 @@ public class FrontController extends HttpServlet {
 		controllerMap.put("/registerForm", new RegisterFormController());
 		controllerMap.put("/login", new LoginUserController());
 		controllerMap.put("/register", new SaveUserController());
+		controllerMap.put("/returnbook", new ReturnController());
 	}
 
 
