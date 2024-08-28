@@ -1,0 +1,11 @@
+/.metadata/
+
+servlet/Servers/.project
+servlet/Servers/.settings/org.eclipse.core.resources.prefs
+servlet/Servers/.settings/org.eclipse.wst.server.core.prefs
+servlet/Servers/Tomcat v9.0 Server at localhost-config/catalina.policy
+servlet/Servers/Tomcat v9.0 Server at localhost-config/catalina.properties
+servlet/Servers/Tomcat v9.0 Server at localhost-config/context.xml
+servlet/Servers/Tomcat v9.0 Server at localhost-config/server.xml
+servlet/Servers/Tomcat v9.0 Server at localhost-config/web.xml
+servlet/Servers/Tomcat v9.0 Server at localhost-config/tomcat-users.xml
