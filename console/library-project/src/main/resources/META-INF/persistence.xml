@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<persistence xmlns="https://jakarta.ee/xml/ns/persistence"
+             xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+             xsi:schemaLocation="https://jakarta.ee/xml/ns/persistence
+             https://jakarta.ee/xml/ns/persistence/persistence_3_1.xsd"
+             version="3.1">
+
+    <persistence-unit name="step02">
+        <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
+
+<!--        <class>dev.syntax.model.Major</class>-->
+<!--        <class>dev.syntax.model.Student</class>-->
+
+        <properties>
+            <!-- JDBC URL, 사용자명, 비밀번호 설정 -->
+            <property name="jakarta.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/test"/>
+            <property name="jakarta.persistence.jdbc.user" value="root"/>
+            <property name="jakarta.persistence.jdbc.password" value="jyp1399@"/>
+
+            <!-- MySQL 드라이버 클래스 지정 -->
+            <property name="jakarta.persistence.jdbc.driver" value="com.mysql.cj.jdbc.Driver"/>
+
+            <!-- Hibernate Dialect 지정 -->
+            <property name="hibernate.dialect" value="org.hibernate.dialect.MySQLDialect"/>
+            <property name="hibernate.hbm2ddl.auto" value="update"/>
+            <property name="hibernate.show_sql" value="true"/>
+            <property name="hibernate.format_sql" value="true"/>
+        </properties>
+    </persistence-unit>
+
+</persistence>
