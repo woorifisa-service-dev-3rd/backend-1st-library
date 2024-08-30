@@ -37,7 +37,9 @@ class KangTest {
             transaction.begin();
         }
 
+        manager.createNativeQuery("DELETE FROM Loan").executeUpdate();
         manager.createNativeQuery("DELETE FROM LoanCard").executeUpdate();
+        manager.createNativeQuery("DELETE FROM Stock").executeUpdate();
         manager.createNativeQuery("DELETE FROM Library").executeUpdate();
         manager.createNativeQuery("DELETE FROM Student").executeUpdate();
 
